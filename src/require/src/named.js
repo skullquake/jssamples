@@ -1,0 +1,9 @@
+define(/*"doesNotWOrk",*/[
+	"module"
+],function(
+	module
+){
+	console.log([module.id,"start"].join(":"));
+	module.exports=module.id;
+	console.log([module.id,"end"].join(":"));
+});
