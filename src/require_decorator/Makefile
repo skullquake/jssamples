@@ -2,7 +2,7 @@ DUK=/usr/bin/duk
 QJS=/usr/bin/qjs
 MUJS=/usr/bin/mujs
 GOJA=/usr/bin/goja
-SRC=./src/a.js
+SRC=./src/main.js
 run:quickjs duktape mujs goja
 quickjs:
 	@echo --------------------------------------------------------------------------------
