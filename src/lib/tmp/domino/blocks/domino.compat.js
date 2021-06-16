@@ -9928,6 +9928,7 @@ function Leaf() {
 }
 
 Leaf.prototype = Object.create(Node.prototype, {
+/*
   hasChildNodes: { value: function() { return false; }},
   firstChild: { value: null },
   lastChild: { value: null },
@@ -9939,6 +9940,7 @@ Leaf.prototype = Object.create(Node.prototype, {
     if (!this._childNodes) this._childNodes = [];
     return this._childNodes;
   }}
+*///skullquake
 });
 
 },{"./Node":20,"./NodeList":22,"./utils":37}],17:[function(require,module,exports){
@@ -11531,7 +11533,7 @@ function Window(document) {
 Window.prototype = Object.create(EventTarget.prototype, {
   _run: { value: function(code, file) {
     if (file) code += '\n//@ sourceURL=' + file;
-    with(this) eval(code);
+    //with(this) eval(code);//skullquake
   }},
   console: { value: console },
   history: { value: {
@@ -17402,11 +17404,11 @@ function EventHandlerBuilder(body, document, form, element) {
 
 EventHandlerBuilder.prototype.build = function build() {
   try {
-    with(this.document.defaultView || {})
-      with(this.document)
-        with(this.form)
-          with(this.element)
-            return eval("(function(event){" + this.body + "})");
+    //with(this.document.defaultView || {})
+      //with(this.document)
+        //with(this.form)
+          //with(this.element)
+            //return eval("(function(event){" + this.body + "})");//skullquake
   }
   catch (err) {
     return function() { throw err }
@@ -19055,7 +19057,6 @@ var combinators = {
 /**
  * Grammar
  */
-
 var rules = {
   qname: /^ *([\w\-]+|\*)/,
   simple: /^(?:([.#][\w\-]+)|pseudo|attr)/,
@@ -19070,7 +19071,7 @@ rules.inside = replace(rules.inside, '[^"\'>]*', rules.inside);
 rules.attr = replace(rules.attr, 'inside', makeInside('\\[', '\\]'));
 rules.pseudo = replace(rules.pseudo, 'inside', makeInside('\\(', '\\)'));
 rules.simple = replace(rules.simple, 'pseudo', rules.pseudo);
-rules.simple = replace(rules.simple, 'attr', rules.attr);
+//rules.simple = replace(rules.simple, 'attr', rules.attr);//skullquake
 
 /**
  * Compiling

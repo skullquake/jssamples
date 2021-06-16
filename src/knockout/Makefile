@@ -4,6 +4,7 @@ MUJS=/usr/bin/mujs
 GOJA=/usr/bin/goja
 SRC=./src/a.js
 run:quickjs duktape goja
+#mujs
 quickjs:
 	@echo --------------------------------------------------------------------------------
 	@echo quickjs:
@@ -14,13 +15,13 @@ duktape:
 	@echo duktape:
 	@echo --------------------------------------------------------------------------------
 	@$(DUK) ../lib/requirejs//require.js ../lib/require.conf.js $(SRC)
-goja:
-	@echo --------------------------------------------------------------------------------
-	@echo goja:
-	@echo --------------------------------------------------------------------------------
-	@$(GOJA) ../lib/requirejs/require.js ../lib/require.conf.js $(SRC)
 mujs:
 	@echo --------------------------------------------------------------------------------
 	@echo mujs:
 	@echo --------------------------------------------------------------------------------
 	@$(MUJS) ../lib/requirejs/require.js ../lib/require.conf.js $(SRC)
+goja:
+	@echo --------------------------------------------------------------------------------
+	@echo goja:
+	@echo --------------------------------------------------------------------------------
+	@$(GOJA) ../lib/requirejs/require.js ../lib/require.conf.js $(SRC)

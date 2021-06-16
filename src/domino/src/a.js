@@ -1,5 +1,5 @@
 console.log("./a.js:start");
-require(["module","./../lib/domino/blocks/domino.compat"],function(module,domino){
+require(["module","./../lib/domino/domino.compat"],function(module,domino){
 	var t0=new Date();
 	var window=domino.createWindow("");
 	var document=window.document;

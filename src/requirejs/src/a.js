@@ -1,0 +1,13 @@
+require([
+	"module",
+	"src/b",
+	"src/c/a",
+],function(
+	module,
+	a,
+	b
+){
+	console.log([module.id,"start"].join(":"));
+	console.log(JSON.stringify(Object.keys(requirejs.s.contexts._.defined)));
+	console.log([module.id,"end"].join(":"));
+});

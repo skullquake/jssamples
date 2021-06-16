@@ -3,7 +3,7 @@ QJS=/usr/bin/qjs
 MUJS=/usr/bin/mujs
 GOJA=/usr/bin/goja
 SRC=./src/a.js
-run:quickjs duktape goja
+run:quickjs duktape goja mujs
 quickjs:
 	@echo --------------------------------------------------------------------------------
 	@echo quickjs:

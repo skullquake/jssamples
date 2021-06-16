@@ -4,6 +4,7 @@ MUJS=/usr/bin/mujs
 GOJA=/usr/bin/goja
 SRC=./src/a.js
 run:quickjs duktape goja
+#mujs
 quickjs:
 	@echo --------------------------------------------------------------------------------
 	@echo quickjs:
