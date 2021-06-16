@@ -1,5 +1,8 @@
+//domino specific globals
 var window;
 var document;
+var navigator={userAgent:""};
+
 require(["module"],function(module){
 	var env="";
 	if(typeof(Duktape)=="object"){//duktape
@@ -24,7 +27,10 @@ require(["module"],function(module){
 			"window":modPath+"util/domino/window",
 			"backbone":modPath+"backbone/backbone",
 			"knockout":modPath+"knockout/knockout-min",
-			"jquery":modPath+"jquery/jquery.slim.min",
+			//"jquery":modPath+"jquery/jquery.slim.min",
+			"jquery":modPath+"jquery/3.6.0/jquery-3.6.0.min",
+			//"jquery":modPath+"jquery/3.6.0/jquery-3.6.0.slim.min",
+			"jqueryui":modPath+"jqueryui/1.12.0/jquery-ui.min",
 			"mustache":modPath+"mustache/mustache.min",
 			"babel":modPath+"babel/6.4.4/babel.min",
 			//"babel":modPath+"babel/7.14.6/babel.min",
@@ -42,6 +48,10 @@ require(["module"],function(module){
 			"jquery":{
 				"exports":"jQuery",
 				"deps":["document","window"]
+			},
+			"jqueryui":{
+				//"exports":"jQuery",
+				"deps":["jquery","document","window"]
 			},
 			"underscore":{
 				"exports":"_"
