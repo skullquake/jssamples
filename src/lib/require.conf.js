@@ -25,7 +25,13 @@ require(["module"],function(module){
 			"backbone":modPath+"backbone/backbone",
 			"knockout":modPath+"knockout/knockout-min",
 			"jquery":modPath+"jquery/jquery.slim.min",
-			"mustache":modPath+"mustache/mustache.min"
+			"mustache":modPath+"mustache/mustache.min",
+			"babel":modPath+"babel/6.4.4/babel.min",
+			//"babel":modPath+"babel/7.14.6/babel.min",
+			//"babel":modPath+"babel/7.14.6/babel",
+			"babel-plugin-transform-remove-strict-mode":modPath+"babel/plugins/babel-plugin-transform-remove-strict-mode/index",
+			"babel-plugin-module-resolver":modPath+"babel/plugins/babel-plugin-module-resolver-standalone/index",
+			"es6":modPath+"es6/es6",
 		},
 		"packages":[],
 		"config":{
@@ -45,7 +51,14 @@ require(["module"],function(module){
 			},
 			"knockout":{
 				"deps":["document","window"]
-			}
+			},
+			"babel":{
+				"deps":[],
+				"exports":"Babel"
+			},
+			"es6":{
+				"deps":["babel","text"]
+			},
 		},
 		"deps":[]
 	});

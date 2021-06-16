@@ -1,15 +1,8 @@
 require([
 	"module",
-	"src/b",
-	"src/c/a",
-	"./src/named"
 ],function(
-	module,
-	a,
-	b,
-	named
+	module
 ){
 	console.log([module.id,"start"].join(":"));
-	console.log(JSON.stringify(Object.keys(requirejs.s.contexts._.defined)));
 	console.log([module.id,"end"].join(":"));
 });
