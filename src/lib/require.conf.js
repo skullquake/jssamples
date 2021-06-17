@@ -2,7 +2,8 @@
 var window;
 var document;
 var navigator={userAgent:""};
-
+//jison
+var self=this;
 require(["module"],function(module){
 	var env="";
 	if(typeof(Duktape)=="object"){//duktape
@@ -38,6 +39,10 @@ require(["module"],function(module){
 			"babel-plugin-transform-remove-strict-mode":modPath+"babel/plugins/babel-plugin-transform-remove-strict-mode/index",
 			"babel-plugin-module-resolver":modPath+"babel/plugins/babel-plugin-module-resolver-standalone/index",
 			"es6":modPath+"es6/es6",
+			"jison":modPath+"jison/jison",
+			"cyclejs":modPath+"cyclejs/cycle",
+			"weakmap":modPath+"weakmap-polyfill/weakmap-polyfill"
+
 		},
 		"packages":[],
 		"config":{
@@ -69,7 +74,16 @@ require(["module"],function(module){
 			"es6":{
 				"deps":["babel","text"]
 			},
+			"cyclejs":{
+				"deps":(env=="duktape"?["weakmap"]:[])
+			},
+			"jison":{
+				"exports":"Jison"
+			},
+			"weakmap":{
+				"exports":"WeakMap",
+			}
 		},
-		"deps":[]
+		"deps":[]//default deps
 	});
 });

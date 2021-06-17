@@ -1,0 +1,11 @@
+require([
+	"module",
+	"weakmap",
+],function(
+	module,
+	weakmap
+){
+	console.log([module.id,"start"].join(":"));
+	console.log(typeof(weakmap));
+	console.log([module.id,"end"].join(":"));
+});
