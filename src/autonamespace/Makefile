@@ -4,7 +4,7 @@ MUJS=/usr/bin/mujs
 GOJA=/usr/bin/goja
 ELK=/usr/bin/elk
 SRC=./src/a.js
-run:quickjs duktape mujs goja elk
+run:duktape  quickjs mujs goja elk
 quickjs:
 	@echo --------------------------------------------------------------------------------
 	@echo quickjs:
