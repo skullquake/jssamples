@@ -1,0 +1,12 @@
+require([
+	"module",
+	"fsutils"
+],function(
+	module,
+	fsutils
+){
+	console.log([module.id,"start"].join(":"));
+	console.log(JSON.stringify(fsutils));
+	console.log(fsutils.cat("./res/a.txt"));
+	console.log([module.id,"end"].join(":"));
+});

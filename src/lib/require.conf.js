@@ -41,8 +41,8 @@ require(["module"],function(module){
 			"es6":modPath+"es6/es6",
 			"jison":modPath+"jison/jison",
 			"cyclejs":modPath+"cyclejs/cycle",
-			"weakmap":modPath+"weakmap-polyfill/weakmap-polyfill"
-
+			"weakmap":modPath+"weakmap-polyfill/weakmap-polyfill",
+			"fsutils":modPath+"fsutils/"+env+"/index"
 		},
 		"packages":[],
 		"config":{
