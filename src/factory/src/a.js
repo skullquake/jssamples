@@ -1,15 +1,17 @@
 var lib=(function(){
-	function create(nm){
-		switch(nm){
+	function create(n){
+		var r=null;
+		switch(n){
 			case"C0":
-				return new C0(/*note:args*/);
+				r=new C0(/*note:args*/);
 				break;
 			case"C1":
-				return new C1(/*note:args*/);
+				r=new C1(/*note:args*/);
 				break;
 			default:
 				throw("ECLS");
 		}
+		return r;
 	};
 	function C0(){};
 	C0.prototype.f=function(){console.log("C0:f");}
