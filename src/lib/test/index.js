@@ -45,7 +45,7 @@ define(["module"],function(module){
 		if(options.fmt){
 			var ret="";
 			statbuf.forEach(function(val,validx){
-				ret+=kbuf[validx]+":\t"+val+"ms"+"\t"+ratiobuf[validx]+"%\t"+Math.floor(1000*options.itr/val)+"op/s\t"+(maxidx==validx?">":"")+(minidx==validx?"<":"")+"\n"
+				ret+=kbuf[validx]+":\t"+val+"ms"+"\t"+ratiobuf[validx]+"%\t"+(Math.floor(100*1000*options.itr/val)/100)+"op/s\t"+(maxidx==validx?">":"")+(minidx==validx?"<":"")+"\n"
 			});
 			return ret;
 		}else{

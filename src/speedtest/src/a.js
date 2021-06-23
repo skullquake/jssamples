@@ -1,6 +1,22 @@
 require(["../lib/test/index"],function(test){
 	//--------------------------------------------------------------------------------
 	{//test0
+		var t0=new Date();
+		console.log(
+			test({
+				fns:{
+					"pause":function(s){
+						s=typeof(s)=="number"?s:1;
+						while(((new Date())-t0)<1000*s);
+					},
+				},
+				arg:[0.5],
+				itr:1,
+				fmt:true
+			})
+		);
+	}
+	{//test0
 		console.log(
 			test({
 				fns:{
