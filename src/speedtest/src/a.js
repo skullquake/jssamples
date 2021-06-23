@@ -1,12 +1,20 @@
 var lib=(function(){
 	var test=function(options){
 		options=typeof(options)=="object"?options:{}
-		if(typeof(options.fns)!="object"||typeof(options.fns.forEach)!="function")throw("EFNS");
+		if(typeof(options.fns)!="object")throw("EFNS");
 		if(typeof(options.arg)!="object"||typeof(options.arg.forEach)!="function")throw("EARG");
 		options.itr=typeof(options.itr)!="undefined"?options.itr:1;
 		if(typeof(options.itr)!="number")throw("EITR");
 		var itrbuf=[];
 		var statbuf=[];
+		var kbuf=[];
+		if(typeof(options.fns.length)=="number"){
+			options.fns.forEach(function(k,i){kbuf.push(i);});
+		}else{
+			var fns=[];
+			Object.keys(options.fns).forEach(function(k){kbuf.push(k);fns.push(options.fns[k]);});
+			options.fns=fns;
+		}
 		options.fns.forEach(function(fn){
 			var t0=new Date();
 			for(var i=0;i<options.itr;i++){
@@ -36,7 +44,7 @@ var lib=(function(){
 		if(options.fmt){
 			var ret="";
 			statbuf.forEach(function(val,validx){
-				ret+=val+"ms"+"\t"+ratiobuf[validx]+"%\t"+Math.floor(1/(val/options.itr))+"op/s\t"+(maxidx==validx?">":"")+(minidx==validx?"<":"")+"\n"
+				ret+=kbuf[validx]+":\t"+val+"ms"+"\t"+ratiobuf[validx]+"%\t"+Math.floor(1/(val/options.itr))+"op/s\t"+(maxidx==validx?">":"")+(minidx==validx?"<":"")+"\n"
 			});
 			return ret;
 		}else{
@@ -51,47 +59,57 @@ var lib=(function(){
 {//test0
 	console.log(
 		lib.test({
-			fns:[
-				function(){
-					Math.sqrt(2);
+			fns:{
+				"sqrt":function(a,b){
+					Math.sqrt(a);
 				},
-				function(){
-					Math.exp(2,2);
+				"exp":function(a,b){
+					Math.exp(a,b);
 				},
-				function(){
-					Math.pow(2,2);
+				"pow":function(a,b){
+					Math.pow(a,b);
 				},
-				function(){
-					Math.sin(1);
+				"sin":function(a,b){
+					Math.sin(a);
 				},
-				function(){
-					Math.cos(1);
+				"cos":function(a,b){
+					Math.cos(a);
 				},
-				function(){
-					Math.tan(1);
+				"tan":function(a,b){
+					Math.tan(a);
 				},
-			],
-			arg:[],
-			itr:1024*1024,
+			},
+			arg:[4,2],
+			itr:512*512,
 			fmt:true
 		})
 	);
 }
-{//test1
-	var a=1.2;
-	var b=1;
+{//test0
 	console.log(
 		lib.test({
 			fns:[
-				function(i){
-					a+a;
+				function(a,b){
+					Math.sqrt(a);
 				},
-				function(i){
-					b+b;
+				function(a,b){
+					Math.exp(a,b);
+				},
+				function(a,b){
+					Math.pow(a,b);
+				},
+				function(a,b){
+					Math.sin(a);
+				},
+				function(a,b){
+					Math.cos(a);
+				},
+				function(a,b){
+					Math.tan(a);
 				},
 			],
-			arg:[],
-			itr:1024*1024,
+			arg:[4,2],
+			itr:512*512,
 			fmt:true
 		})
 	);
