@@ -22,64 +22,89 @@ var lib=(function(){
 	}
 })();
 //--------------------------------------------------------------------------------
-var a={
-	a:{
+require(["../lib/test/index"],function(test){
+	var a={
 		a:{
-		},
-		b:{
-			a:{
-			}
-		},
-		c:{
 			a:{
 			},
 			b:{
-			}
-		}
-	},
-	b:{
-		a:{
-		},
-		b:{
-			a:{
-			}
-		},
-		c:{
-			a:{
-			},
-			b:{
-			}
-		},
-		d:{
-			a:{
-			},
-			b:{
+				a:{
+				}
 			},
 			c:{
+				a:{
+				},
+				b:{
+				}
 			}
-		}
+		},
+		b:{
+			a:{
+			},
+			b:{
+				a:{
+				}
+			},
+			c:{
+				a:{
+				},
+				b:{
+				}
+			},
+			d:{
+				a:{
+				},
+				b:{
+				},
+				c:{
+				}
+			}
 
+		}
+	};
+	/*
+	//console.log(JSON.stringify(a));
+	{
+		lib.visit(a);
 	}
-};
-console.log(JSON.stringify(a));
-{
-	lib.visit(a);
-}
-{
-	var pmap={};
-	lib.visit(a,function(pth,o){
-		return true;
-	},function(pth,o){
-		pmap[pth]=o;
-	});
-	console.log(JSON.stringify(pmap));
-}
-{
-	var pbuf=[];
-	lib.visit(a,function(pth,o){
-		return pth.indexOf("a.b")==0;
-	},function(pth,o){
-		pbuf.push(pth);
-	});
-	console.log(JSON.stringify(pbuf));
-}
+	{
+		var pmap={};
+		lib.visit(a,function(pth,o){
+			return true;
+		},function(pth,o){
+			pmap[pth]=o;
+		});
+		//console.log(JSON.stringify(pmap));
+	}
+	{
+		var pbuf=[];
+		lib.visit(a,function(pth,o){
+			return pth.indexOf("a.b")==0;
+		},function(pth,o){
+			pbuf.push(pth);
+		});
+		//console.log(JSON.stringify(pbuf));
+	}
+	*/
+	console.log(test({
+		fns:{
+			"t0":function(){
+				var pbuf=[];
+				lib.visit(a,function(pth,o){
+					return pth.indexOf("a.b")==0;
+				},function(pth,o){
+					pbuf.push(pth);
+				});
+			},
+			"t1":function(){
+				lib.visit(a,function(pth,o){
+					return false
+				},function(pth,o){
+				});
+			},
+		},
+		arg:[],
+		itr:512,
+		fmt:true
+	}));
+});
