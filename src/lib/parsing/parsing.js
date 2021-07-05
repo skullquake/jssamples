@@ -1,4 +1,4 @@
-//!(function(name,context,definition){if(typeof exports==='object'){module.exports=definition(require);}else if(typeof define==='function'&&define.amd){define(definition); }else{context[name]=definition();}}).call(this,'parseActivePassive',this,function(require){
+!(function(name,context,definition){if(typeof exports==='object'){module.exports=definition(require);}else if(typeof define==='function'&&define.amd){define(definition); }else{context[name]=definition();}}).call(this,'parseActivePassive',this,function(require){
 	function parseActivePassive(prsng,unparsedcontent){
 		if (typeof prsng.startParsing === "function") {
 			prsng.startParsing();
@@ -134,5 +134,5 @@
 			prsng.endParsing();
 		}
 	}
-	//return parseActivePassive;
-//});
+	return parseActivePassive;
+});

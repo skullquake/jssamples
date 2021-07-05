@@ -4,8 +4,8 @@ var document;
 var navigator={userAgent:""};
 //jison
 var self=this;
+var env="";
 require(["module"],function(module){
-	var env="";
 	if(typeof(Duktape)=="object"){//duktape
 		env="duktape";
 	}else if(typeof(std)=="object"){//quickjs
@@ -14,6 +14,8 @@ require(["module"],function(module){
 		env="goja";
 	}else if(typeof(read)=="function"){//mujs
 		env="mujs";
+	}else{
+		env="browser";
 	}
 	var baseUrl="";
 	var modPath="../lib/";
@@ -23,14 +25,14 @@ require(["module"],function(module){
 		"paths":{
 			"text":modPath+"requirejs/require.text",
 			"underscore":modPath+"underscore/underscore-umd",
-			"domino":(env=="mujs"?(modPath+"domino/domino.compat"):(modPath+"domino/domino")),
+			"domino":(env=="mujs"?(modPath+"domino/domino.compat"):(modPath+"domino/domino")),//todo: browser interop inside domino source, not on top
 			"document":modPath+"util/domino/document",
 			"window":modPath+"util/domino/window",
 			"backbone":modPath+"backbone/backbone",
 			"knockout":modPath+"knockout/knockout-min",
 			//"jquery":modPath+"jquery/jquery.slim.min",
-			"jquery":modPath+"jquery/3.6.0/jquery-3.6.0.min",
 			//"jquery":modPath+"jquery/3.6.0/jquery-3.6.0.slim.min",
+			"jquery":modPath+"jquery/3.6.0/jquery-3.6.0.min",
 			"jqueryui":modPath+"jqueryui/1.12.0/jquery-ui.min",
 			"mustache":modPath+"mustache/mustache.min",
 			"babel":modPath+"babel/6.4.4/babel.min",
@@ -41,6 +43,7 @@ require(["module"],function(module){
 			"es6":modPath+"es6/es6",
 			"jison":modPath+"jison/jison",
 			"cyclejs":modPath+"cyclejs/cycle",
+			"jsonata":modPath+"jsonata/jsonata-es5.min",
 			"weakmap":modPath+"weakmap-polyfill/weakmap-polyfill",
 			"fsutils":modPath+"fsutils/"+env+"/index"
 		},

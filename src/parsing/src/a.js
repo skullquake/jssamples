@@ -1,36 +1,41 @@
-function render(src,options){
-	var out="";
-	var prsng={
-		target:null,//target,
-		options:options,
-		src:src,
-		beglbl:"[@",
-		endlbl:"@]",
-		t0:null,
-		t1:null,
-		out:"",
-		startParsing:function(){
-		},
-		print:function(val){
-			if(arguments!=="undefined"&&arguments.length>0){
-				out+=val;
-			}
-		},
-		endParsing:function(){
-		}
-	};
-	parseActivePassive(prsng,src);
-	return out;
-}
-//--------------------------------------------------------------------------------
-{
-	var t0=new Date();
-	var out=render('[@print("test0:begin\\n");@][@for(var i=0;i<8192;i++){@]test_[@print(i.toString());print("\\n");@][@}@][@print("\\ntest0:end");@]');
-	var t1=new Date();
-	var td=(t1-t0);
-	console.log(td);
-	//console.log(out);
-}
-{
-	var out=render('[@print("test1:begin\\n");print(JSON.stringify(prsng.options));print("\\ntest1:end");@]',{foo:42});console.log(out);
-}
+require([
+	"module",
+	"./src/render"
+],function(
+	module,
+	render
+){
+	//non-browser tests (quickjs,duktape,mujs,goja)
+	if(env!="browser"){
+		require([
+			//"./src/tests/0.js",
+			//"./src/tests/1.js",
+			//"./src/tests/2.js",
+			//"./src/tests/3.js"
+			"./src/tests/4.js"
+		],function(
+			//test_0,
+			//test_1,
+			//test_2,
+			//test_3,
+			test_4
+		){
+			//test_0(render);
+			//test_1(render);
+			//test_2(render);
+			//test_3(render);
+			test_4();
+		});
+	//browser test
+	}else{
+		window.setTimeout(function(){document.location.reload();},5000);
+		require([
+			"./src/tests/browser.js"
+		],function(
+			test
+		){
+			test();
+		});
+
+	}
+});
